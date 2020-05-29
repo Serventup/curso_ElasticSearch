@@ -20,7 +20,7 @@ services:
       - node.data=false
       - node.ingest=false
       - cluster.remote.connect=false 
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1
@@ -44,7 +44,7 @@ services:
       - node.data=false
       - node.ingest=false
       - cluster.remote.connect=false 
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1
@@ -63,12 +63,12 @@ services:
       - bootstrap.memory_lock=true
       - discovery.seed_hosts=master2,datos1,datos2,ingest1,ingest2,cordi1
       - cluster.initial_master_nodes=master1,master2
-      - node.master=false
+      - node.master=true
       - node.voting_only=true
       - node.data=true
       - node.ingest=false
       - cluster.remote.connect=false 
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1
@@ -92,7 +92,7 @@ services:
       - node.data=true
       - node.ingest=false
       - cluster.remote.connect=false 
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1
@@ -116,8 +116,8 @@ services:
       - node.data=false
       - node.ingest=true
       - cluster.remote.connect=false 
-      - transport_host=_eth0_ #9300 = backlog
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - transport.host=_eth0_ #9300 = backlog
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1
@@ -142,8 +142,8 @@ services:
       - node.data=false
       - node.ingest=true
       - cluster.remote.connect=false 
-      - transport_host=_eth0_ #9300 = backlog
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - transport.host=_eth0_ #9300 = backlog
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1
@@ -168,8 +168,8 @@ services:
       - node.data=false
       - node.ingest=false
       - cluster.remote.connect=false 
-      - transport_host=_eth0_ #9300 = backlog
-      - "ES_JAVA_OPTS=-Xms150m -Xmx150m"
+      - transport.host=_eth0_ #9300 = backlog
+      - "ES_JAVA_OPTS=-Xms350m -Xmx350m"
     ulimits:
       memlock:
         soft: -1

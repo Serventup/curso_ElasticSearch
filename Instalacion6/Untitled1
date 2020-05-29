@@ -1,0 +1,92 @@
+#cambio cluster
+2 nodos data --> 4 data
+250 de memoria
+2 nodos data: Potentes (etiqueta)
+2 nodos data: Debiles (etiqueta)
+
+2 indices 
+INdice A --  2 shards + 2 replicas --> Primarios en maquinas potentes
+Indice B --  4 shards + 1 replica 
+
+Configurar tiempo de espera antes de movimiento de 2 minutos
+
+Paso 1: Crear atributos (tag) aosicados a cada nodo:
+    node.attr.tamano: medio
+Paso 2: Agregar filtros de asignación para cada indica que s equiera controlar:
+    PUT mi_indice/_settings {"index.routing.allocation.[include|require|exclude].tamano" : "mediano"}
+    
+Retraso en reubicar
+    index.unassigned.node_left.delayer_timeout
+
+
+////////////////////////////////////////////////////////////////////////////
+
+Nodo 1 - Servidor web1
+           apache.log
+    filebeat  ^        --> LOGSTASH XX
+    
+Nodo 2 - Servidor web2
+           apache.log
+    filebeat   ^      --> LOGSTASH XX
+    
+LOGSTASH (escuchando puerto XX)
+    Datos logs y los preprocesa
+    Reenvia:
+        - Cluster Elastic
+
+Cluster Elasticsearch1
+    Nodos datos
+    Nodos ingesta
+    Nodo coordinador
+
+Cluster Elasticsearch2
+    Nodos datos
+    Nodos ingesta
+    Nodo coordinador
+
+
+
+
+
+URL: 
+http(s)://maquina:puerto/contexto?queryString(clave=valor&clave2=valor2)
+http(s)://maquina:puerto/ --> nos lo pasa ya el kibana 
+
+PUT POST DELETE GET HEAD
+
+PUT --> alta en mi servidor
+POST --> modificar algo de dentro
+DELETE --> eliminar algo de dentro
+HEAD --> pregunta si existe o no existe
+
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+PUT  miindice01
+
+PUT miindice01/_settings
+{
+  "index":{
+    "number_of_replicas" :1
+    
+  }
+}
+
+GET miindice01/_settings
+
+HEAD miindice01
+
+DELETE miindice01
+
+PUT miindice01
+{
+   "settings":{
+    "number_of_shards":2
+    , "number_of_replicas":2
+    
+  }
+}
